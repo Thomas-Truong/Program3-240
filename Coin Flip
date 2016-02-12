@@ -1,0 +1,63 @@
+/***************************************************************
+CSCI 240         Program 3     Spring 2016
+ 
+Programmer: Thomas Truong and Michael Mansel
+ 
+Section: 0002
+ 
+Date Due: 2/12/2016
+ 
+Purpose: Coin Flips
+***************************************************************/
+
+#include <iostream>
+#include <iomanip>
+#include <ctime>
+#include <cstdlib>
+
+using namespace std;
+
+
+int main()
+	{
+	double Heads, Tails, toss, NumberTimes, HeadsPercent, TailsPercent; // claims all my variables doubles
+	
+		toss= rand() % 2; // intializes rand num generator
+		//random seed generators
+		srand(1); 
+		srand(time(0));
+		
+			cout << "How many times would you like to toss the coin? "; // prints
+			cin >> NumberTimes; // stores answer
+	
+		//prevents a negative number input
+		while (NumberTimes < 0)
+		{
+					cout << "Please pick a positive number. How many times would you like to toss the coin? ";	
+					cin >> NumberTimes;	
+					
+		}	
+			// The loop for the coinflip, adds from zero in increments of 1 and stops at the number that was inputed earlier
+			for (int i=0; i < NumberTimes; i++)
+			{
+				toss= rand() % 2;
+				if (toss== 0)
+					Heads++;
+				else
+					Tails++;	
+			}
+			// Prints out the total number of Heads and Tails
+			cout << "Heads: " << Heads << endl;
+			cout << "Tails: " << Tails << endl;
+			// Calculates the Heads and Tails percentage
+			HeadsPercent= Heads/(Heads + Tails)*100;
+			TailsPercent= Tails/(Heads + Tails)*100;
+			// Prints out the percentages
+			cout << fixed << setprecision(1);
+			cout << "Heads Percentage: " <<  HeadsPercent << endl;
+			cout << "Tails Percentage: " <<  TailsPercent << endl;
+			
+		system("pause");
+		return 0;
+			
+	}
